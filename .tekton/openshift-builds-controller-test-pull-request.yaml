@@ -4,7 +4,6 @@ metadata:
   annotations:
     build.appstudio.openshift.io/repo: https://github.com/psrvere/redhat-openshift-builds-shipwright-io?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
-    build.appstudio.redhat.com/pull_request_number: '{{pull_request_number}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: |
