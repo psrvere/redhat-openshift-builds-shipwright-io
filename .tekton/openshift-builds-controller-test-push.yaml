@@ -29,6 +29,8 @@ spec:
     value: '{{revision}}'
   - name: output-image
     value: quay.io/repository/prathore/openshift-builds-controller-test:{{revision}}
+  - name: image-expires-after
+    value: 5d
   - name: dockerfile
     value: .konflux/controller/Dockerfile
   - name: build-source-image
