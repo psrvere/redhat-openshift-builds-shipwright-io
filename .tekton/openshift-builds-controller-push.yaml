@@ -2,13 +2,13 @@ apiVersion: tekton.dev/v1
 kind: PipelineRun
 metadata:
   annotations:
-    build.appstudio.openshift.io/repo: https://github.com/redhat-openshift-builds/shipwright-io?rev={{revision}}
+    build.appstudio.openshift.io/repo: https://github.com/psrvere/redhat-openshift-builds-shipwright-io?rev={{revision}}
     build.appstudio.redhat.com/commit_sha: '{{revision}}'
     build.appstudio.redhat.com/target_branch: '{{target_branch}}'
     pipelinesascode.tekton.dev/max-keep-runs: "3"
     pipelinesascode.tekton.dev/on-cel-expression: |
       event == "push" &&
-      target_branch == "builds-1.4" &&
+      target_branch == "builds-1.4-test" &&
       (
         files.all.exists(x, x.matches('build/version/|build/pkg/controller/|build/pkg/client|build/pkg/reconciler|build/pkg/volumes|build/pkg/validate|build/pkg/env|build/pkg/metrics/|build/pkg/apis/|build/pkg/config/|build/pkg/ctxlog/|build/cmd/shipwright-build-controller/|.konflux/controller/')) ||
         files.all.exists(x, x.matches('build/go.mod|build/go.sum')) ||
@@ -27,7 +27,7 @@ spec:
   - name: revision
     value: '{{revision}}'
   - name: output-image
-    value: quay.io/redhat-user-workloads/rh-openshift-builds-tenant/openshift-builds-controller-1-4:{{revision}}
+    value: quay.io/repository/prathore/openshift-builds-controller-test:{{revision}}
   - name: dockerfile
     value: .konflux/controller/Dockerfile
   - name: build-source-image
